@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             eventItem[b].style.width = elWidth + 20 + 'px';      
 
         //    раположение элемента относительно высоты задач расположенных слева
-            eventItem[b].style.top = eventTitle[b].getBoundingClientRect().y -140 + 'px';           
+            eventItem[b].style.top = eventTitle[b].getBoundingClientRect().y -155 + 'px';           
         }
     }
     positionDay()

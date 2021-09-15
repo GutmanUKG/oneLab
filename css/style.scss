@@ -78,6 +78,8 @@
                     width: 224px;
                     display: flex;
                     align-items: center;
+                   
+                    width: 300px;
                     border: 1px solid #E8E8E8;
                     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #EEF2F4;
                     a{
@@ -140,6 +142,11 @@
                 border-bottom: 1px solid #EEF2F4;
                 padding-left: 10px;
                 align-items: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 240px;
+                
             }
         }
         .calendar{
@@ -203,6 +210,9 @@
                     text-decoration: none;
                     color:#FFFFFF;
                     padding: 10px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
         }
