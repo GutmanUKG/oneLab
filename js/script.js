@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   
 
 
+ 
+  
 
     //   Позиция элемента исходя из даты начала и окончания активности
 
@@ -93,9 +95,56 @@ document.addEventListener('DOMContentLoaded', ()=>{
             eventItem[b].style.width = elWidth + 20 + 'px';      
 
         //    раположение элемента относительно высоты задач расположенных слева
-            eventItem[b].style.top = eventTitle[b].getBoundingClientRect().y -155 + 'px';           
+            eventItem[b].style.top = eventTitle[b].getBoundingClientRect().y - 105 + 'px';           
         }
     }
     positionDay()
 
+    let dragLink = document.querySelectorAll('.event');
+    let addWidth = document.querySelectorAll('.width_el');
+    let calendar = document.querySelector('.calendar');
+    // перетаскивание 
+    dragLink.forEach(item=>{
+        item.onmousedown = function(event){
+            item.style.position = 'absolute';
+            item.style.zIndex = 1000;
+            calendar.append(item);
+            moveAt(event.pageX, event.pageY);
+
+            function moveAt(pageX, pageY) {
+                item.style.left = pageX - item.offsetWidth / 2 + 'px';
+                item.style.top = pageY - item.offsetHeight / 2 + 'px';
+                item.classList.add('drop');
+                item.classList.add('active_event')
+              }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            calendar.addEventListener('mousemove', onMouseMove);
+
+            item.onmouseup = function() {
+                calendar.removeEventListener('mousemove', onMouseMove);
+                item.onmouseup = null;
+                item.classList.remove('active_event')
+              };
+            item.ondragstart = function() {
+                return false;
+              };
+        }
+    })
+    // Увеличение ширины
+    addWidth.forEach((item,id)=>{
+        item.onmousedown = function(event){
+            addWidth(item,id)
+        }
+        function addWidth(id){
+            for(let i = 0; i < dragLink.length; i++){
+                
+                // console.log(item)
+            }
+        }
+    })
 })
+
